@@ -1,0 +1,19 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{{ path('app_index_index') }}">Sensio TV+</a>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+                <a class="nav-link {{ current_route == 'app_index_index' ? 'active' }}" href="{{ path('app_index_index') }}">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ current_route == 'app_movie_index' ? 'active' }}" href="{{ path('app_movie_index') }}">Movie</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ current_route == 'app_book_index' ? 'active' }}" href="#">Book</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{ current_route == 'app_contact' ? 'active' }}" href="{{ path('app_contact') }}">Contact</a>
+            </li>
+        </ul>
+    </div>
+</nav>
