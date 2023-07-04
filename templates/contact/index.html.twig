@@ -2,18 +2,12 @@
 
 {% block title %}Hello ContactController!{% endblock %}
 
-{% block navbar '' %}
-
-
 {% block body %}
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/Users/sergiyosipchuk/mblackbit_training/src/Controller/ContactController.php'|file_link(0) }}">src/Controller/ContactController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/Users/sergiyosipchuk/mblackbit_training/templates/contact/index.html.twig'|file_link(0) }}">templates/contact/index.html.twig</a></code></li>
-    </ul>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button type="submit" class="btn btn-primary">Send message</button>
+    {{ form_end(form) }}
 </div>
 {% endblock %}

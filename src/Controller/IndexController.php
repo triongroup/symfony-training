@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\MovieRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -9,10 +10,12 @@ use Symfony\Component\Routing\Annotation\Route;
 class IndexController extends AbstractController
 {
     #[Route('/', name: 'app_index_index')]
-    public function index(): Response
+    public function index(MovieRepository $movieRepository): Response
     {
+        $movies = $movieRepository->findBy([], ['id' => 'DESC'], 6);
+
         return $this->render('index/index.html.twig', [
-            'controller_name' => 'IndexController',
+            'movies' => $movies,
         ]);
     }
 

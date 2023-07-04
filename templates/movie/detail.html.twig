@@ -8,11 +8,13 @@
     <h1>{{ movie.title }}</h1>
     <p>{{ movie.releasedAt|date('Y-m-d') }}</p>
 
-    <div>Genres:</div>
-    <ul>
-        {% for item in movie.genre %}
-            <li>{{ item }}</li>
-        {% endfor %}
-    </ul>
+{#    <div>Genres:</div>#}
+{#    <ul>#}
+{#        {% for item in movie.genre %}#}
+{#            <li>{{ item }}</li>#}
+{#        {% else %}#}
+{#            <p> no genres</p>#}
+{#        {% endfor %}#}
+{#    </ul>#}
 </div>
 {% endblock %}
