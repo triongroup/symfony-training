@@ -13,10 +13,18 @@
         {% endblock %}
     </head>
     <body>
-        {% block navbar %}
-            {{ include('includes/_nav.html.twig', {'current_route': app.request.attributes.get('_route')}) }}
-        {% endblock %}
-
-        {% block body %}{% endblock %}
+        <header>
+            {% block navbar %}
+                {{ include('includes/_nav.html.twig', {current: app.current_route}) }}
+            {% endblock %}
+            {% block header %}
+            {% endblock %}
+        </header>
+        <main class="container mt-5">
+            {% block body %}{% endblock %}
+        </main>
+        <footer>
+            {{ render_esi(controller('App\\Controller\\MovieController::decades')) }}
+        </footer>
     </body>
 </html>

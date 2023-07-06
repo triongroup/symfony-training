@@ -34,8 +34,17 @@ class Movie
     #[ORM\Column(nullable: true)]
     private ?int $price = null;
 
-    #[ORM\ManyToMany(targetEntity: Genre::class, inversedBy: 'movies')]
+    #[ORM\ManyToMany(targetEntity: Genre::class, cascade: ['persist'])]
     private Collection $genres;
+
+    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    private ?string $imdb_id = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $rated = null;
+
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'movies')]
+    private ?User $createdBy = null;
 
     public function __construct()
     {
@@ -139,6 +148,42 @@ class Movie
     public function removeGenre(Genre $genre): static
     {
         $this->genres->removeElement($genre);
+
+        return $this;
+    }
+
+    public function getImdbId(): ?string
+    {
+        return $this->imdb_id;
+    }
+
+    public function setImdbId(?string $imdb_id): static
+    {
+        $this->imdb_id = $imdb_id;
+
+        return $this;
+    }
+
+    public function getRated(): ?string
+    {
+        return $this->rated;
+    }
+
+    public function setRated(?string $rated): static
+    {
+        $this->rated = $rated;
+
+        return $this;
+    }
+
+    public function getCreatedBy(): ?User
+    {
+        return $this->createdBy;
+    }
+
+    public function setCreatedBy(?User $createdBy): static
+    {
+        $this->createdBy = $createdBy;
 
         return $this;
     }
